@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "540599465945",
+    "firebase_url": "https://my-movie-list-e444e.firebaseio.com",
+    "project_id": "my-movie-list-e444e",
+    "storage_bucket": "my-movie-list-e444e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540599465945:android:f93746ab2bfa096282cbc8",
+        "android_client_info": {
+          "package_name": "test.trips.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540599465945-i33kt1dfr3pnaspuc839t23j8i2hflep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "test.trips.android",
+            "certificate_hash": "8e66bac3cf9bfd7bdf59e56217f5c462760502e4"
+          }
+        },
+        {
+          "client_id": "540599465945-389jl276p96eknjoinl5v0rnvdc8sjvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMZHRgNojBa12y-Z7Mqht73N3uhn8bjTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540599465945-389jl276p96eknjoinl5v0rnvdc8sjvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

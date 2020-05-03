@@ -11,6 +11,7 @@ object KodeinBuilder {
             import(RetrofitModuleBuilder.build(app))
             import(WebServicesModuleBuilder.build())
             import(ObjectBoxModule.build(app))
+            import(SessionModuleBuilder.build())
             import(ErrorMessagesModule.build())
         }
     }
