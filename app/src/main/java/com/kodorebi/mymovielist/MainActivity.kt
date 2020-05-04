@@ -14,7 +14,7 @@ import org.kodein.di.generic.instance
 
 class MainActivity : AppCompatActivity() {
 
-    private val db : Db by App.kodein.instance()
+    private val db : Db by App.kodein.instance<Db>()
 
     private val navController: NavController by lazy {
         findNavController(R.id.navHost)
@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        navController.setGraph(R.navigation.sign_in_nav_graph)
     }
 
     override fun onBackPressed() {

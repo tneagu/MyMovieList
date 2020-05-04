@@ -6,6 +6,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kodorebi.mymovielist.R
+import com.kodorebi.mymovielist.app.App
+import com.kodorebi.mymovielist.ws.firebase.FirebaseAuthentification
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import org.kodein.di.generic.instance
 
 /**
  * Created by TNE17909 on 4/28/2020.
@@ -20,6 +26,9 @@ class SignInViewModel : ViewModel() {
         class SignedIn(val userId: Int) : State()
     }
 
+    private val firebaseAuthentication : FirebaseAuthentification by App.kodein.instance<FirebaseAuthentification>()
+
+    private val disposables = CompositeDisposable()
     private val _emailError = MutableLiveData<String?>()
     private val _passwordError = MutableLiveData<String?>()
 
@@ -95,6 +104,25 @@ class SignInViewModel : ViewModel() {
     fun signIn(){
         _state.value = State.SigningIn
 
-        //TODO signIn
+        val disposable = firebaseAuthentication.login(email, password)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _state.postValue(
+                    State.SignedIn(1)
+                )
+            }, {
+                _state.postValue(
+                    State.SignInFailed(Throwable("SignInError"))
+                )
+            })
+
+        disposables.add(disposable)
+    }
+
+
+    override fun onCleared() {
+        super.onCleared()
+        disposables.dispose()
     }
 }
